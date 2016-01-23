@@ -10,7 +10,7 @@ def play_game(num_doors, door_change_option):
     opened_door = random.randint(0, num_doors - 1)
     while opened_door == player_choice or opened_door == car_location:
         opened_door = random.randint(0, num_doors - 1)
-    if door_change_option == 1:
+    if door_change_option:
         player_choice_changed = random.randint(0, num_doors - 1)
         while player_choice_changed == player_choice or player_choice_changed == opened_door:
             player_choice_changed = random.randint(0, num_doors - 1)
@@ -24,13 +24,13 @@ def play_lots (times_played, num_doors, door_change_option):
     sum = 0
     for num in range(times_played):
         sum += play_game(num_doors, door_change_option)
-    if door_change_option == 1: 
+    if door_change_option: 
         return "With door change we get " + str((sum/times_played)*100) + "% right"
     else: 
         return "Without door change we get " + str((sum/times_played)*100) + "% right"
         
 
 
-print play_lots(100000, 3, 1)
-print play_lots(100000, 3, 0)
+print play_lots(10000, 5, True)
+print play_lots(10000, 5, False)
         
